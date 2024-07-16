@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HyperNav - Your AI-Powered Navigation Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #2e3440;
+      color: #eceff4;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .logo-container {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .ai-subtitle {
+      font-size: 1.2em;
+      color: #81a1c1;
+      margin-top: 10px;
+    }
+
+    .categories-container {
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .category {
+      margin-bottom: 30px;
+    }
+
+    .category-title {
+      font-size: 1.8em;
+      border-bottom: 2px solid #81a1c1;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      background-color: #3b4252;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #eceff4;
+      transition: background-color 0.3s;
+    }
+
+    .nav-item:hover {
+      background-color: #4c566a;
+    }
+
+    .nav-item-icon {
+      margin-right: 8px; /* 图标和文字之间的间距 */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-container">
+      <h1 class="logo">HyperNav</h1>
+      <div class="ai-subtitle">AI-Powered Navigation</div>
+    </div>
+    
+    <div class="categories-container">
+      <div class="category">
+        <h2 class="category-title">实用工具</h2>
+        <div class="nav-grid" id="tool-links">
+          <a href="https://translate.google.com" class="nav-item"><span>Google翻译</span></a>
+          <a href="https://www.zhihu.com" class="nav-item"><span>知乎</span></a>
+          <a href="https://github.com" class="nav-item"><span>GitHub</span></a>
+          <a href="https://www.youtube.com" class="nav-item"><span>YouTube</span></a>
+          <a href="https://mail.google.com" class="nav-item"><span>Gmail</span></a>
+          <!-- 添加更多链接 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const keywordIconMap = {
+      "翻译": "fas fa-language",
+      "translate": "fas fa-language",
+      "知乎": "fab fa-zhihu",
+      "zhihu": "fab fa-zhihu",
+      "github": "fab fa-github",
+      "gitlab": "fab fa-gitlab",
+      "mail": "fas fa-envelope",
+      "email": "fas fa-envelope",
+      "video": "fas fa-video",
+      "youtube": "fab fa-youtube",
+      "music": "fas fa-music",
+      "news": "fas fa-newspaper",
+      "social": "fas fa-users",
+      "settings": "fas fa-cogs",
+      "tools": "fas fa-wrench"
+      // 添加更多关键字和图标的映射
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const navItems = document.querySelectorAll('.nav-item');
+      
+      navItems.forEach(item => {
+        const linkText = item.querySelector('span').innerText.toLowerCase().trim();
+        let iconClass = null;
+        
+        for (const [keyword, icon] of Object.entries(keywordIconMap)) {
+          if (linkText.includes(keyword)) {
+            iconClass = icon;
+            break;
+          }
+        }
+        
+        if (iconClass) {
+          const iconElement = document.createElement('i');
+          iconElement.className = `nav-item-icon ${iconClass}`;
+          item.querySelector('span').prepend(iconElement);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

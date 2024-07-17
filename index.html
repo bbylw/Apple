@@ -1,152 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation Page</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #fff;
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .categories-container {
-            display: grid;
-            gap: 20px;
-        }
-        .category {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .category-title {
-            margin-top: 0;
-            font-size: 24px;
-            border-bottom: 1px solid #fff;
-            padding-bottom: 10px;
-        }
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-        }
-        .nav-item {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-            text-decoration: none;
-            color: #fff;
-            transition: background 0.3s ease;
-        }
-        .nav-item:hover {
-            background: rgba(255, 255, 255, 0.4);
-        }
-        .nav-item span {
-            display: inline-block;
-            vertical-align: middle;
-        }
-        .nav-item i {
-            display: block;
-            margin-bottom: 5px;
-        }
-    </style>
+    <title>导航页面</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 引入 FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-dy1bU6XBQXOo9u5GFiP+CXtwT1t4rW7C0eAaOdRaRDa97f+AzFVlp9CnXU8FnTrJ" crossorigin="anonymous">
 </head>
 <body>
     <div class="categories-container">
         <div class="category">
             <h2 class="category-title">Ai搜索</h2>
             <div class="nav-grid">
-                <a href="https://www.google.com" class="nav-item"><i class="fas fa-search"></i><span>Google</span></a>
-                <a href="https://www.bing.com" class="nav-item"><i class="fas fa-search"></i><span>Bing</span></a>
-                <a href="https://websim.ai/" class="nav-item"><i class="fas fa-robot"></i><span>websim</span></a>
-                <a href="https://chatgpt.com/" class="nav-item"><i class="fas fa-robot"></i><span>chatgpt</span></a>
-                <a href="https://www.doubao.com/chat/" class="nav-item"><i class="fas fa-robot"></i><span>傻豆包</span></a>
-                <a href="https://yuanbao.tencent.com/chat/naQivTmsDa" class="nav-item"><i class="fas fa-robot"></i><span>傻元宝</span></a>
-                <a href="https://poe.com/" class="nav-item"><i class="fas fa-robot"></i><span>poe</span></a>
-                <a href="https://claude.ai/" class="nav-item"><i class="fas fa-robot"></i><span>claude</span></a>
+                <a href="https://www.google.com" class="nav-item"><span>Google</span></a>
+                <a href="https://www.bing.com" class="nav-item"><span>Bing</span></a>
+                <a href="https://websim.ai/" class="nav-item"><span>websim</span></a>
+                <a href="https://chatgpt.com/" class="nav-item"><span>chatgpt</span></a>
+                <a href="https://www.doubao.com/chat/" class="nav-item"><span>傻豆包</span></a>
+                <a href="https://yuanbao.tencent.com/chat/naQivTmsDa" class="nav-item"><span>傻元宝</span></a>
+                <a href="https://poe.com/" class="nav-item"><span>poe</span></a>
+                <a href="https://claude.ai/" class="nav-item"><span>claude</span></a>
             </div>
         </div>
 
         <div class="category">
             <h2 class="category-title">社交媒体</h2>
             <div class="nav-grid">
-                <a href="https://www.facebook.com" class="nav-item"><i class="fab fa-facebook"></i><span>Facebook</span></a>
-                <a href="https://twitter.com" class="nav-item"><i class="fab fa-twitter"></i><span>Twitter</span></a>
-                <a href="https://www.instagram.com" class="nav-item"><i class="fab fa-instagram"></i><span>Instagram</span></a>
-                <a href="https://www.linkedin.com" class="nav-item"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
-                <a href="https://www.tiktok.com" class="nav-item"><i class="fab fa-tiktok"></i><span>TikTok</span></a>
-                <a href="https://www.reddit.com" class="nav-item"><i class="fab fa-reddit"></i><span>Reddit</span></a>
-                <a href="https://github.com/" class="nav-item"><i class="fab fa-github"></i><span>github</span></a>
+                <a href="https://www.facebook.com" class="nav-item"><span>Facebook</span></a>
+                <a href="https://twitter.com" class="nav-item"><span>Twitter</span></a>
+                <a href="https://www.instagram.com" class="nav-item"><span>Instagram</span></a>
+                <a href="https://www.linkedin.com" class="nav-item"><span>LinkedIn</span></a>
+                <a href="https://www.tiktok.com" class="nav-item"><span>TikTok</span></a>
+                <a href="https://www.reddit.com" class="nav-item"><span>Reddit</span></a>
+                <a href="https://github.com/" class="nav-item"><span>github</span></a>
             </div>
         </div>
 
         <div class="category">
             <h2 class="category-title">实用工具</h2>
             <div class="nav-grid">
-                <a href="https://translate.google.com" class="nav-item"><i class="fas fa-language"></i><span>Google翻译</span></a>
-                <a href="https://d.186404.xyz/" class="nav-item"><i class="fas fa-link"></i><span>短链</span></a>
-                <a href="https://dynv6.com/" class="nav-item"><i class="fas fa-cloud"></i><span>dynv6</span></a>
-                <a href="https://fast.com/" class="nav-item"><i class="fas fa-tachometer-alt"></i><span>网速测试</span></a>
-                <a href="https://www.cloudns.net/" class="nav-item"><i class="fas fa-cloud"></i><span>cloudns</span></a>
-                <a href="https://www.cloudflare.com/zh-cn/" class="nav-item"><i class="fas fa-cloud"></i><span>cloudflare</span></a>
-                <a href="https://ygpy.net/" class="nav-item"><i class="fas fa-user-friends"></i><span>一个朋友</span></a>
-                <a href="https://notebooklm.google/" class="nav-item"><i class="fas fa-book"></i><span>谷歌笔记</span></a>
-                <a href="https://email.ml/" class="nav-item"><i class="fas fa-envelope"></i><span>临时邮箱</span></a>
-                <a href="https://www.ahhhhfs.com/" class="nav-item"><i class="fas fa-user"></i><span>A姐</span></a>
-                <a href="https://ip.sb/" class="nav-item"><i class="fas fa-search-location"></i><span>IP查询</span></a>
-                <a href="https://img.186404.xyz/" class="nav-item"><i class="fas fa-image"></i><span>图床</span></a>
-                <a href="https://www.site.ac/" class="nav-item"><i class="fas fa-share"></i><span>site域名转发</span></a>
-                <a href="https://zh.go-to-library.sk/" class="nav-item"><i class="fas fa-book"></i><span>Z-Library</span></a>
-                <a href="https://nic.us.kg/" class="nav-item"><i class="fas fa-globe"></i><span>us.kg域名</span></a>
-                <a href="https://www.spaceship.com/zh/" class="nav-item"><i class="fas fa-space-shuttle"></i><span>spaceship廉价域名</span></a>
+                <a href="https://translate.google.com" class="nav-item"><span>Google翻译</span></a>
+                <a href="https://d.186404.xyz/" class="nav-item"><span>短链</span></a>
+                <a href="https://dynv6.com/" class="nav-item"><span>dynv6</span></a>
+                <a href="https://fast.com/" class="nav-item"><span>网速测试</span></a>
+                <a href="https://www.cloudns.net/" class="nav-item"><span>cloudns</span></a>
+                <a href="https://www.cloudflare.com/zh-cn/" class="nav-item"><span>cloudflare</span></a>
+                <a href="https://ygpy.net/" class="nav-item"><span>一个朋友</span></a>
+                <a href="https://notebooklm.google/" class="nav-item"><span>谷歌笔记</span></a>
+                <a href="https://email.ml/" class="nav-item"><span>临时邮箱</span></a>
+                <a href="https://www.ahhhhfs.com/" class="nav-item"><span>A姐</span></a>
+                <a href="https://ip.sb/" class="nav-item"><span>IP查询</span></a>
+                <a href="https://img.186404.xyz/" class="nav-item"><span>图床</span></a>
+                <a href="https://www.site.ac/" class="nav-item"><span>site域名转发</span></a>
+                <a href="https://zh.go-to-library.sk/" class="nav-item"><span>Z-Library</span></a>
+                <a href="https://nic.us.kg/" class="nav-item"><span>us.kg域名</span></a>
+                <a href="https://www.spaceship.com/zh/" class="nav-item"><span>spaceship廉价域名</span></a>
             </div>
         </div>
 
         <div class="category">
             <h2 class="category-title">科技资讯</h2>
             <div class="nav-grid">
-                <a href="https://www.techcrunch.com" class="nav-item"><i class="fas fa-newspaper"></i><span>TechCrunch</span></a>
-                <a href="https://www.wired.com" class="nav-item"><i class="fas fa-newspaper"></i><span>Wired</span></a>
-                <a href="https://www.theverge.com" class="nav-item"><i class="fas fa-newspaper"></i><span>The Verge</span></a>
-                <a href="https://arstechnica.com" class="nav-item"><i class="fas fa-newspaper"></i><span>Ars Technica</span></a>
-                <a href="https://www.engadget.com" class="nav-item"><i class="fas fa-newspaper"></i><span>Engadget</span></a>
-                <a href="https://techradar.com" class="nav-item"><i class="fas fa-newspaper"></i><span>TechRadar</span></a>
-                <a href="https://b.186404.xyz/" class="nav-item"><i class="fas fa-newspaper"></i><span>科技博客</span></a>
-                <a href="https://www.cnbeta.com.tw/" class="nav-item"><i class="fas fa-newspaper"></i><span>cnbeta</span></a>
+                <a href="https://www.techcrunch.com" class="nav-item"><span>TechCrunch</span></a>
+                <a href="https://www.wired.com" class="nav-item"><span>Wired</span></a>
+                <a href="https://www.theverge.com" class="nav-item"><span>The Verge</span></a>
+                <a href="https://arstechnica.com" class="nav-item"><span>Ars Technica</span></a>
+                <a href="https://www.engadget.com" class="nav-item"><span>Engadget</span></a>
+                <a href="https://techradar.com" class="nav-item"><span>TechRadar</span></a>
+                <a href="https://b.186404.xyz/" class="nav-item"><span>科技博客</span></a>
+                <a href="https://www.cnbeta.com.tw/" class="nav-item"><span>cnbeta</span></a>
             </div>
         </div>
 
         <div class="category">
             <h2 class="category-title">云存储</h2>
             <div class="nav-grid">
-                <a href="https://www.dropbox.com" class="nav-item"><i class="fas fa-cloud"></i><span>Dropbox</span></a>
-                <a href="https://drive.google.com" class="nav-item"><i class="fas fa-cloud"></i><span>Google Drive</span></a>
-                <a href="https://onedrive.live.com" class="nav-item"><i class="fas fa-cloud"></i><span>OneDrive</span></a>
-                <a href="https://www.box.com" class="nav-item"><i class="fas fa-cloud"></i><span>Box</span></a>
-                <a href="https://www.mediafire.com" class="nav-item"><i class="fas fa-cloud"></i><span>MediaFire</span></a>
-                <a href="https://mega.nz" class="nav-item"><i class="fas fa-cloud"></i><span>MEGA</span></a>
+                <a href="https://www.dropbox.com" class="nav-item"><span>Dropbox</span></a>
+                <a href="https://drive.google.com" class="nav-item"><span>Google Drive</span></a>
+                <a href="https://onedrive.live.com" class="nav-item"><span>OneDrive</span></a>
+                <a href="https://www.box.com" class="nav-item"><span>Box</span></a>
+                <a href="https://www.mediafire.com" class="nav-item"><span>MediaFire</span></a>
+                <a href="https://mega.nz" class="nav-item"><span>MEGA</span></a>
             </div>
         </div>
 
         <div class="category">
             <h2 class="category-title">电子邮箱</h2>
             <div class="nav-grid">
-                <a href="https://mail.google.com" class="nav-item"><i class="fas fa-envelope"></i><span>Gmail</span></a>
-                <a href="https://outlook.live.com" class="nav-item"><i class="fas fa-envelope"></i><span>Outlook</span></a>
-                <a href="https://mail.yahoo.com" class="nav-item"><i class="fas fa-envelope"></i><span>Yahoo Mail</span></a>
-                <a href="https://www.zoho.com/mail" class="nav-item"><i class="fas fa-envelope"></i><span>Zoho Mail</span></a>
-                <a href="https://www.protonmail.com" class="nav-item"><i class="fas fa-envelope"></i><span>ProtonMail</span></a>
-                <a href="https://mail.qq.com" class="nav-item"><i class="fas fa-envelope"></i><span>QQ邮箱</span></a>
+                <a href="https://mail.google.com" class="nav-item"><span>Gmail</span></a>
+                <a href="https://outlook.live.com" class="nav-item"><span>Outlook</span></a>
+                <a href="https://mail.yahoo.com" class="nav-item"><span>Yahoo Mail</span></a>
+                <a href="https://www.zoho.com/mail" class="nav-item"><span>Zoho Mail</span></a>
+                <a href="https://www.protonmail.com" class="nav-item"><span>ProtonMail</span></a>
+                <a href="https://mail.qq.com" class="nav-item"><span>QQ邮箱</span></a>
             </div>
         </div>
     </div>
-    <!-- FontAwesome Library -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>

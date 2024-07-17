@@ -1,83 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="https://hypernav.tech" />
   <title>HyperNav - Your AI-Powered Navigation Hub</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #2e3440;
-      color: #eceff4;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .logo-container {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .logo {
-      font-size: 2.5em;
-      font-weight: bold;
-      margin: 0;
-    }
-
-    .ai-subtitle {
-      font-size: 1.2em;
-      color: #81a1c1;
-      margin-top: 10px;
-    }
-
-    .categories-container {
-      width: 100%;
-      max-width: 800px;
-    }
-
-    .category {
-      margin-bottom: 30px;
-    }
-
-    .category-title {
-      font-size: 1.8em;
-      border-bottom: 2px solid #81a1c1;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-    }
-
-    .nav-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-    }
-
-    .nav-item {
-      display: flex;
-      align-items: center;
-      background-color: #3b4252;
-      padding: 10px 15px;
-      border-radius: 5px;
-      text-decoration: none;
-      color: #eceff4;
-      transition: background-color 0.3s;
-    }
-
-    .nav-item:hover {
-      background-color: #4c566a;
-    }
-
-    .nav-item-icon {
-      margin-right: 8px; /* 图标和文字之间的间距 */
-    }
+    /* Your existing styles here */
   </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
   <div class="container">
@@ -87,60 +17,76 @@
     </div>
     
     <div class="categories-container">
-      <div class="category">
-        <h2 class="category-title">实用工具</h2>
-        <div class="nav-grid" id="tool-links">
-          <a href="https://translate.google.com" class="nav-item"><span>Google翻译</span></a>
-          <a href="https://www.zhihu.com" class="nav-item"><span>知乎</span></a>
-          <a href="https://github.com" class="nav-item"><span>GitHub</span></a>
-          <a href="https://www.youtube.com" class="nav-item"><span>YouTube</span></a>
-          <a href="https://mail.google.com" class="nav-item"><span>Gmail</span></a>
-          <!-- 添加更多链接 -->
-        </div>
-      </div>
+      <!-- Your existing categories here -->
     </div>
   </div>
-
   <script>
-    const keywordIconMap = {
-      "翻译": "fas fa-language",
-      "translate": "fas fa-language",
-      "知乎": "fab fa-zhihu",
-      "zhihu": "fab fa-zhihu",
-      "github": "fab fa-github",
-      "gitlab": "fab fa-gitlab",
-      "mail": "fas fa-envelope",
-      "email": "fas fa-envelope",
-      "video": "fas fa-video",
-      "youtube": "fab fa-youtube",
-      "music": "fas fa-music",
-      "news": "fas fa-newspaper",
-      "social": "fas fa-users",
-      "settings": "fas fa-cogs",
-      "tools": "fas fa-wrench"
-      // 添加更多关键字和图标的映射
-    };
+    // Function to determine icon class based on link text or URL
+    function getIconClass(link) {
+      const url = link.href.toLowerCase();
+      const text = link.textContent.toLowerCase();
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const navItems = document.querySelectorAll('.nav-item');
-      
-      navItems.forEach(item => {
-        const linkText = item.querySelector('span').innerText.toLowerCase().trim();
-        let iconClass = null;
-        
-        for (const [keyword, icon] of Object.entries(keywordIconMap)) {
-          if (linkText.includes(keyword)) {
-            iconClass = icon;
-            break;
-          }
-        }
-        
-        if (iconClass) {
-          const iconElement = document.createElement('i');
-          iconElement.className = `nav-item-icon ${iconClass}`;
-          item.querySelector('span').prepend(iconElement);
-        }
-      });
+      if (url.includes("google") || text.includes("google")) return "fas fa-search";
+      if (url.includes("bing") || text.includes("bing")) return "fas fa-search";
+      if (url.includes("facebook") || text.includes("facebook")) return "fab fa-facebook-f";
+      if (url.includes("twitter") || text.includes("twitter")) return "fab fa-twitter";
+      if (url.includes("instagram") || text.includes("instagram")) return "fab fa-instagram";
+      if (url.includes("linkedin") || text.includes("linkedin")) return "fab fa-linkedin-in";
+      if (url.includes("tiktok") || text.includes("tiktok")) return "fab fa-tiktok";
+      if (url.includes("reddit") || text.includes("reddit")) return "fab fa-reddit-alien";
+      if (url.includes("github") || text.includes("github")) return "fab fa-github";
+      if (url.includes("dropbox") || text.includes("dropbox")) return "fab fa-dropbox";
+      if (url.includes("drive") || text.includes("drive")) return "fab fa-google-drive";
+      if (url.includes("onedrive") || text.includes("onedrive")) return "fas fa-cloud";
+      if (url.includes("box") || text.includes("box")) return "fas fa-box";
+      if (url.includes("mediafire") || text.includes("mediafire")) return "fas fa-fire";
+      if (url.includes("mega") || text.includes("mega")) return "fas fa-lock";
+      if (url.includes("gmail") || text.includes("gmail")) return "fas fa-envelope";
+      if (url.includes("outlook") || text.includes("outlook")) return "fas fa-envelope-open";
+      if (url.includes("yahoo") || text.includes("yahoo")) return "fas fa-envelope-square";
+      if (url.includes("zoho") || text.includes("zoho")) return "fas fa-at";
+      if (url.includes("protonmail") || text.includes("protonmail")) return "fas fa-shield-alt";
+      if (url.includes("qq") || text.includes("qq")) return "fas fa-envelope";
+      if (url.includes("websim") || text.includes("websim")) return "fas fa-paw";
+      if (url.includes("chatgpt") || text.includes("chatgpt")) return "fas fa-tachometer-alt";
+      if (url.includes("doubao") || text.includes("傻豆包")) return "fas fa-tree";
+      if (url.includes("yuanbao") || text.includes("傻元宝")) return "fas fa-globe";
+      if (url.includes("poe") || text.includes("poe")) return "fas fa-tree";
+      if (url.includes("claude") || text.includes("claude")) return "fas fa-tachometer-alt";
+      if (url.includes("translate") || text.includes("翻译")) return "fas fa-language";
+      if (url.includes("short") || text.includes("短链")) return "fas fa-square-root-alt";
+      if (url.includes("dynv6") || text.includes("dynv6")) return "fas fa-calculator";
+      if (url.includes("fast") || text.includes("网速测试")) return "fas fa-tachometer-alt";
+      if (url.includes("cloudns") || text.includes("cloudns")) return "fas fa-clock";
+      if (url.includes("cloudflare") || text.includes("cloudflare")) return "fas fa-book-open";
+      if (url.includes("ygpy") || text.includes("一个朋友")) return "fas fa-square-root-alt";
+      if (url.includes("notebooklm") || text.includes("笔记")) return "fas fa-calculator";
+      if (url.includes("email") || text.includes("邮箱")) return "fas fa-tachometer-alt";
+      if (url.includes("ahhhhfs") || text.includes("ahhhhfs")) return "fas fa-clock";
+      if (url.includes("ip") || text.includes("ip")) return "fas fa-book-open";
+      if (url.includes("img") || text.includes("图床")) return "fas fa-tachometer-alt";
+      if (url.includes("site") || text.includes("site")) return "fas fa-clock";
+      if (url.includes("z-library") || text.includes("Z-Library")) return "fas fa-book-open";
+      if (url.includes("us.kg") || text.includes("us.kg")) return "fas fa-book-open";
+      if (url.includes("spaceship") || text.includes("spaceship")) return "fas fa-clock";
+      if (url.includes("freedomain") || text.includes("freedomain")) return "fas fa-square-root-alt";
+      if (url.includes("techcrunch") || text.includes("techcrunch")) return "fas fa-microchip";
+      if (url.includes("wired") || text.includes("wired")) return "fas fa-plug";
+      if (url.includes("verge") || text.includes("verge")) return "fas fa-newspaper";
+      if (url.includes("arstechnica") || text.includes("arstechnica")) return "fas fa-flask";
+      if (url.includes("engadget") || text.includes("engadget")) return "fas fa-gamepad";
+      if (url.includes("techradar") || text.includes("techradar")) return "fas fa-satellite-dish";
+      if (url.includes("blog") || text.includes("博客")) return "fas fa-microchip";
+      if (url.includes("cnbeta") || text.includes("cnbeta")) return "fas fa-plug";
+      return "fas fa-link"; // Default icon if no match found
+    }
+
+    // Add icons to nav items
+    document.querySelectorAll('.nav-item').forEach(link => {
+      const iconClass = getIconClass(link);
+      const icon = document.createElement('i');
+      icon.className = `nav-item-icon ${iconClass}`;
+      link.querySelector('span').insertBefore(icon, link.querySelector('span').firstChild);
     });
   </script>
 </body>

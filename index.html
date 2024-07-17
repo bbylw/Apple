@@ -1,93 +1,238 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <base href="https://hypernav.tech" />
-  <title>HyperNav - Your AI-Powered Navigation Hub</title>
-  <style>
-    /* Your existing styles here */
-  </style>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Navigation Hub</title>
+  <style>
+    :root {
+      --bg-color: #0e0e0e;
+      --text-color: #fff;
+      --tile-size: 200px;
+      --gap-size: 20px;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -1000px 0;
+      }
+      100% {
+        background-position: 1000px 0;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .logo-container {
+      margin-bottom: 50px;
+    }
+
+    .logo {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .ai-subtitle {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: rgba(255, 255, 255, 0.7);
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 10px rgba(0, 255, 255, 0.7);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(var(--tile-size), 1fr));
+      gap: var(--gap-size);
+      justify-items: center;
+    }
+
+    .tile {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      color: var(--text-color);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .tile:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+    }
+
+    .tile::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      right: -50%;
+      bottom: -50%;
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(0, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+      transform: rotate(45deg);
+      animation: shimmer 5s infinite linear;
+    }
+
+    .tile:hover::before {
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(0, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    .tile-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tile h3 {
+      margin: 10px 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .tile p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .page-content {
+      display: none;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: left;
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+
+    .page-content h2 {
+      margin-top: 0;
+    }
+
+    .back-button {
+      display: block;
+      margin: 20px 0;
+      padding: 10px 20px;
+      color: var(--text-color);
+      background-color: rgba(0, 255, 255, 0.2);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .back-button:hover {
+      background-color: rgba(0, 255, 255, 0.4);
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <div class="logo-container">
       <h1 class="logo">HyperNav</h1>
-      <div class="ai-subtitle">AI-Powered Navigation</div>
+      <p class="ai-subtitle">Your AI-Powered Navigation Hub</p>
     </div>
-    
-    <div class="categories-container">
-      <!-- Your existing categories here -->
+    <div class="grid">
+      <a class="tile" href="#page1">
+        <div class="tile-content">
+          <h3>Page 1</h3>
+          <p>Description for Page 1</p>
+        </div>
+      </a>
+      <a class="tile" href="#page2">
+        <div class="tile-content">
+          <h3>Page 2</h3>
+          <p>Description for Page 2</p>
+        </div>
+      </a>
+      <a class="tile" href="#page3">
+        <div class="tile-content">
+          <h3>Page 3</h3>
+          <p>Description for Page 3</p>
+        </div>
+      </a>
+      <a class="tile" href="#page4">
+        <div class="tile-content">
+          <h3>Page 4</h3>
+          <p>Description for Page 4</p>
+        </div>
+      </a>
+      <a class="tile" href="#page5">
+        <div class="tile-content">
+          <h3>Page 5</h3>
+          <p>Description for Page 5</p>
+        </div>
+      </a>
+    </div>
+    <div id="page1" class="page-content">
+      <h2>Page 1</h2>
+      <p>This is the content of Page 1.</p>
+      <button class="back-button" onclick="hidePages()">Back to Home</button>
+    </div>
+    <div id="page2" class="page-content">
+      <h2>Page 2</h2>
+      <p>This is the content of Page 2.</p>
+      <button class="back-button" onclick="hidePages()">Back to Home</button>
+    </div>
+    <div id="page3" class="page-content">
+      <h2>Page 3</h2>
+      <p>This is the content of Page 3.</p>
+      <button class="back-button" onclick="hidePages()">Back to Home</button>
+    </div>
+    <div id="page4" class="page-content">
+      <h2>Page 4</h2>
+      <p>This is the content of Page 4.</p>
+      <button class="back-button" onclick="hidePages()">Back to Home</button>
+    </div>
+    <div id="page5" class="page-content">
+      <h2>Page 5</h2>
+      <p>This is the content of Page 5.</p>
+      <button class="back-button" onclick="hidePages()">Back to Home</button>
     </div>
   </div>
-  <script>
-    // Function to determine icon class based on link text or URL
-    function getIconClass(link) {
-      const url = link.href.toLowerCase();
-      const text = link.textContent.toLowerCase();
 
-      if (url.includes("google") || text.includes("google")) return "fas fa-search";
-      if (url.includes("bing") || text.includes("bing")) return "fas fa-search";
-      if (url.includes("facebook") || text.includes("facebook")) return "fab fa-facebook-f";
-      if (url.includes("twitter") || text.includes("twitter")) return "fab fa-twitter";
-      if (url.includes("instagram") || text.includes("instagram")) return "fab fa-instagram";
-      if (url.includes("linkedin") || text.includes("linkedin")) return "fab fa-linkedin-in";
-      if (url.includes("tiktok") || text.includes("tiktok")) return "fab fa-tiktok";
-      if (url.includes("reddit") || text.includes("reddit")) return "fab fa-reddit-alien";
-      if (url.includes("github") || text.includes("github")) return "fab fa-github";
-      if (url.includes("dropbox") || text.includes("dropbox")) return "fab fa-dropbox";
-      if (url.includes("drive") || text.includes("drive")) return "fab fa-google-drive";
-      if (url.includes("onedrive") || text.includes("onedrive")) return "fas fa-cloud";
-      if (url.includes("box") || text.includes("box")) return "fas fa-box";
-      if (url.includes("mediafire") || text.includes("mediafire")) return "fas fa-fire";
-      if (url.includes("mega") || text.includes("mega")) return "fas fa-lock";
-      if (url.includes("gmail") || text.includes("gmail")) return "fas fa-envelope";
-      if (url.includes("outlook") || text.includes("outlook")) return "fas fa-envelope-open";
-      if (url.includes("yahoo") || text.includes("yahoo")) return "fas fa-envelope-square";
-      if (url.includes("zoho") || text.includes("zoho")) return "fas fa-at";
-      if (url.includes("protonmail") || text.includes("protonmail")) return "fas fa-shield-alt";
-      if (url.includes("qq") || text.includes("qq")) return "fas fa-envelope";
-      if (url.includes("websim") || text.includes("websim")) return "fas fa-paw";
-      if (url.includes("chatgpt") || text.includes("chatgpt")) return "fas fa-tachometer-alt";
-      if (url.includes("doubao") || text.includes("傻豆包")) return "fas fa-tree";
-      if (url.includes("yuanbao") || text.includes("傻元宝")) return "fas fa-globe";
-      if (url.includes("poe") || text.includes("poe")) return "fas fa-tree";
-      if (url.includes("claude") || text.includes("claude")) return "fas fa-tachometer-alt";
-      if (url.includes("translate") || text.includes("翻译")) return "fas fa-language";
-      if (url.includes("short") || text.includes("短链")) return "fas fa-square-root-alt";
-      if (url.includes("dynv6") || text.includes("dynv6")) return "fas fa-calculator";
-      if (url.includes("fast") || text.includes("网速测试")) return "fas fa-tachometer-alt";
-      if (url.includes("cloudns") || text.includes("cloudns")) return "fas fa-clock";
-      if (url.includes("cloudflare") || text.includes("cloudflare")) return "fas fa-book-open";
-      if (url.includes("ygpy") || text.includes("一个朋友")) return "fas fa-square-root-alt";
-      if (url.includes("notebooklm") || text.includes("笔记")) return "fas fa-calculator";
-      if (url.includes("email") || text.includes("邮箱")) return "fas fa-tachometer-alt";
-      if (url.includes("ahhhhfs") || text.includes("ahhhhfs")) return "fas fa-clock";
-      if (url.includes("ip") || text.includes("ip")) return "fas fa-book-open";
-      if (url.includes("img") || text.includes("图床")) return "fas fa-tachometer-alt";
-      if (url.includes("site") || text.includes("site")) return "fas fa-clock";
-      if (url.includes("z-library") || text.includes("Z-Library")) return "fas fa-book-open";
-      if (url.includes("us.kg") || text.includes("us.kg")) return "fas fa-book-open";
-      if (url.includes("spaceship") || text.includes("spaceship")) return "fas fa-clock";
-      if (url.includes("freedomain") || text.includes("freedomain")) return "fas fa-square-root-alt";
-      if (url.includes("techcrunch") || text.includes("techcrunch")) return "fas fa-microchip";
-      if (url.includes("wired") || text.includes("wired")) return "fas fa-plug";
-      if (url.includes("verge") || text.includes("verge")) return "fas fa-newspaper";
-      if (url.includes("arstechnica") || text.includes("arstechnica")) return "fas fa-flask";
-      if (url.includes("engadget") || text.includes("engadget")) return "fas fa-gamepad";
-      if (url.includes("techradar") || text.includes("techradar")) return "fas fa-satellite-dish";
-      if (url.includes("blog") || text.includes("博客")) return "fas fa-microchip";
-      if (url.includes("cnbeta") || text.includes("cnbeta")) return "fas fa-plug";
-      return "fas fa-link"; // Default icon if no match found
+  <script>
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page-content');
+      pages.forEach(page => page.style.display = 'none');
+      document.getElementById(pageId).style.display = 'block';
+      document.querySelector('.grid').style.display = 'none';
     }
 
-    // Add icons to nav items
-    document.querySelectorAll('.nav-item').forEach(link => {
-      const iconClass = getIconClass(link);
-      const icon = document.createElement('i');
-      icon.className = `nav-item-icon ${iconClass}`;
-      link.querySelector('span').insertBefore(icon, link.querySelector('span').firstChild);
-    });
+    function hidePages() {
+      const pages = document.querySelectorAll('.page-content');
+      pages.forEach(page => page.style.display = 'none');
+      document.querySelector('.grid').style.display = 'grid';
+      location.hash = ''; // Clear the hash
+    }
+
+    function handleHashChange() {
+      const pageId = location.hash.substring(1);
+      if (pageId) {
+        showPage(pageId);
+      } else {
+        hidePages();
+      }
+    }
+
+    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('load', handleHashChange);
   </script>
 </body>
 </html>

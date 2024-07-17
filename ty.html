@@ -243,8 +243,7 @@
         <h3>Instagram</h3>
       </a>
       <a href="https://www.linkedin.com" class="link-card">
-        <i class="fab fa-linkedin"></i>
-        <h3>LinkedIn</h3>
+        <i class="fab fa-linkedin"></h3>LinkedIn</h3>
       </a>
       <a href="https://www.tiktok.com" class="link-card">
         <i class="fab fa-tiktok"></i>
@@ -430,8 +429,7 @@
         <i class="fas fa-mail-bulk"></i>
         <h3>临时谷歌邮箱</h3>
       </a>
-    </section>
-  </main>
+    </section  </main>
   <footer>
     <p>&copy; 2023 WebNav Hub. All rights reserved.</p>
     <nav>
@@ -443,58 +441,67 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const links = document.querySelectorAll(".link-card");
+      const defaultIcons = [
+        "fas fa-link", 
+        "fas fa-globe", 
+        "fas fa-star", 
+        "fas fa-rocket", 
+        "fas fa-cog", 
+        "fas fa-tools"
+      ];
 
       links.forEach(link => {
         const url = link.getAttribute("href");
         const icon = link.querySelector("i");
+        let assignedIcon = "";
 
         if (url.includes("google.com")) {
-          icon.className = "fab fa-google";
+          assignedIcon = "fab fa-google";
         } else if (url.includes("bing.com")) {
-          icon.className = "fab fa-microsoft";
+          assignedIcon = "fab fa-microsoft";
         } else if (url.includes("facebook.com")) {
-          icon.className = "fab fa-facebook";
+          assignedIcon = "fab fa-facebook";
         } else if (url.includes("twitter.com")) {
-          icon.className = "fab fa-twitter";
+          assignedIcon = "fab fa-twitter";
         } else if (url.includes("instagram.com")) {
-          icon.className = "fab fa-instagram";
+          assignedIcon = "fab fa-instagram";
         } else if (url.includes("linkedin.com")) {
-          icon.className = "fab fa-linkedin";
+          assignedIcon = "fab fa-linkedin";
         } else if (url.includes("tiktok.com")) {
-          icon.className = "fab fa-tiktok";
+          assignedIcon = "fab fa-tiktok";
         } else if (url.includes("reddit.com")) {
-          icon.className = "fab fa-reddit";
+          assignedIcon = "fab fa-reddit";
         } else if (url.includes("github.com")) {
-          icon.className = "fab fa-github";
+          assignedIcon = "fab fa-github";
         } else if (url.includes("translate.google.com")) {
-          icon.className = "fas fa-language";
+          assignedIcon = "fas fa-language";
         } else if (url.includes("cloudflare.com")) {
-          icon.className = "fas fa-shield-alt";
+          assignedIcon = "fas fa-shield-alt";
         } else if (url.includes("protonmail.com")) {
-          icon.className = "fas fa-shield-alt";
+          assignedIcon = "fas fa-shield-alt";
         } else if (url.includes("mail.google.com")) {
-          icon.className = "fas fa-envelope";
+          assignedIcon = "fas fa-envelope";
         } else if (url.includes("outlook.live.com")) {
-          icon.className = "fab fa-microsoft";
+          assignedIcon = "fab fa-microsoft";
         } else if (url.includes("dropbox.com")) {
-          icon.className = "fas fa-cloud";
+          assignedIcon = "fas fa-cloud";
         } else if (url.includes("drive.google.com")) {
-          icon.className = "fab fa-google-drive";
+          assignedIcon = "fab fa-google-drive";
         } else if (url.includes("onedrive.live.com")) {
-          icon.className = "fab fa-microsoft";
+          assignedIcon = "fab fa-microsoft";
         } else if (url.includes("box.com")) {
-          icon.className = "fas fa-box";
+          assignedIcon = "fas fa-box";
         } else if (url.includes("mediafire.com")) {
-          icon.className = "fas fa-file-alt";
+          assignedIcon = "fas fa-file-alt";
         } else if (url.includes("mega.nz")) {
-          icon.className = "fas fa-cloud-upload-alt";
+          assignedIcon = "fas fa-cloud-upload-alt";
         } else {
-          icon.className = "fas fa-link"; // Default icon
+          assignedIcon = defaultIcons[Math.floor(Math.random() * defaultIcons.length)];
         }
+
+        icon.className = assignedIcon;
       });
     });
   </script>
 </body>
 </html>
-
-          

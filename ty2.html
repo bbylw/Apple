@@ -158,35 +158,38 @@
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        var targetId = this.getAttribute('href').split('#')[1];
-        var targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth' });
-          // Update URL without reloading the page
-          history.pushState(null, null, '#' + targetId);
-        }
-      });
+document.addEventListener('DOMContentLoaded', function() {
+  var navLinks = document.querySelectorAll('nav a');
+  
+  navLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var targetId = this.getAttribute('href').split('#')[1];
+      var targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+        
+        // Update URL without changing the domain
+        var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '#' + targetId;
+        window.history.pushState({path: newUrl}, '', newUrl);
+      }
     });
+  });
 
-    // Handle initial load and back/forward navigation
-    function handleHashChange() {
-      var hash = window.location.hash;
-      if (hash) {
-        var targetElement = document.getElementById(hash.substring(1));
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth' });
-        }
+  // Handle initial load and back/forward navigation
+  function handleHashChange() {
+    var hash = window.location.hash;
+    if (hash) {
+      var targetElement = document.getElementById(hash.substring(1));
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
       }
     }
+  }
 
-    window.addEventListener('hashchange', handleHashChange);
-    handleHashChange(); // Handle initial load
-  });
+  window.addEventListener('hashchange', handleHashChange);
+  handleHashChange(); // Handle initial load
+});
 </script>
 </head>
 <body>

@@ -1,4 +1,5 @@
-<html><head><base href="https://g.186404.xyz/Apple/"><title>WebNav Hub</title>
+
+<html><head><base href="https://ap.186404.xyz/"><title>WebNav Hub</title>
 <style>
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -100,11 +101,6 @@
     margin-bottom: 5px;
     font-weight: 600;
   }
-  .link-card p {
-    font-size: 14px;
-    color: #86868b;
-    line-height: 1.4;
-  }
   .category-title {
     font-size: 28px;
     font-weight: 700;
@@ -141,9 +137,6 @@
     .link-card h3 {
       font-size: 14px;
     }
-    .link-card p {
-      font-size: 12px;
-    }
     .category-title {
       scroll-margin-top: 100px;
     }
@@ -164,6 +157,40 @@
   }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var navLinks = document.querySelectorAll('nav a');
+  
+  navLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var targetId = this.getAttribute('href').split('#')[1];
+      var targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+        
+        // Update URL without changing the domain
+        var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '#' + targetId;
+        window.history.pushState({path: newUrl}, '', newUrl);
+      }
+    });
+  });
+
+  // Handle initial load and back/forward navigation
+  function handleHashChange() {
+    var hash = window.location.hash;
+    if (hash) {
+      var targetElement = document.getElementById(hash.substring(1));
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }
+
+  window.addEventListener('hashchange', handleHashChange);
+  handleHashChange(); // Handle initial load
+});
+</script>
 </head>
 <body>
   <header>
@@ -435,4 +462,4 @@
       <a href="#">联系我们</a>
     </nav>
   </footer>
-</body></html
+</body></html>

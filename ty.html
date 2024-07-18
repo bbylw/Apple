@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <base href="https://g.186404.xyz/Apple/">
     <meta charset="UTF-8">
@@ -196,10 +197,11 @@
             .category-title {
                 font-size: 20px;
             }
-        }
+       }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+
 <body>
     <header>
         <h1>WebNav Hub</h1>
@@ -460,7 +462,7 @@
                 <h3>临时谷歌邮箱</h3>
             </a>
         </section>
-    </main>
+  </main>
     <footer>
         <p>&copy; 2023 WebNav Hub. All rights reserved.</p>
         <nav>
@@ -472,18 +474,13 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // 获取当前的域名
             var currentDomain = window.location.hostname;
 
-            // 定义一个包含所有绑定域名的数组
-            var allowedDomains = ['g.186404.xyz', 'ap.186404.xyz', 'ap.free2.dns.army', 'ap.404f.us.kg', 'ap.c404.us.kg', 'ap.f404.us.kg'];
+            var allowedDomains = ['g.186404.xyz', 'ap.186404.xyz', 'ap.free2.dns.army', 'ap.404f.us.kg', 'ap.c404.us.kg'];
 
-            // 检查当前域名是否在允许的域名列表中
             if (allowedDomains.includes(currentDomain)) {
-                // 获取所有导航链接
                 var navLinks = document.querySelectorAll("nav a");
 
-                // 遍历每个导航链接并添加点击事件
                 navLinks.forEach(function(link) {
                     link.addEventListener("click", function(event) {
                         event.preventDefault();
@@ -500,4 +497,5 @@
         });
     </script>
 </body>
+
 </html>

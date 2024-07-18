@@ -69,22 +69,6 @@
             padding-top: 30px;
         }
 
-        .hero h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            background: linear-gradient(90deg, #007aff, #ff2d55);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 16px;
-            color: #86868b;
-            max-width: 90%;
-            margin: 0 auto;
-        }
-
         .link-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -197,7 +181,7 @@
             .category-title {
                 font-size: 20px;
             }
-       }
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -207,12 +191,12 @@
         <h1>WebNav Hub</h1>
     </header>
     <nav>
-        <a href="#" data-category="ai-search">Ai 搜索</a>
-        <a href="#" data-category="social">社交媒体</a>
-        <a href="#" data-category="tools">实用工具</a>
-        <a href="#" data-category="tech-news">科技资讯</a>
-        <a href="#" data-category="cloud-storage">云存储</a>
-        <a href="#" data-category="email">电子邮箱</a>
+        <a href="#ai-search" data-category="ai-search">Ai 搜索</a>
+        <a href="#social" data-category="social">社交媒体</a>
+        <a href="#tools" data-category="tools">实用工具</a>
+        <a href="#tech-news" data-category="tech-news">科技资讯</a>
+        <a href="#cloud-storage" data-category="cloud-storage">云存储</a>
+        <a href="#email" data-category="email">电子邮箱</a>
     </nav>
     <main>
         <section class="hero">
@@ -462,7 +446,7 @@
                 <h3>临时谷歌邮箱</h3>
             </a>
         </section>
-  </main>
+</main>
     <footer>
         <p>&copy; 2023 WebNav Hub. All rights reserved.</p>
         <nav>
@@ -474,26 +458,19 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var currentDomain = window.location.hostname;
+            var navLinks = document.querySelectorAll("nav a");
 
-            var allowedDomains = ['g.186404.xyz', 'ap.186404.xyz', 'ap.free2.dns.army', 'ap.404f.us.kg', 'ap.c404.us.kg'];
+            navLinks.forEach(function(link) {
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    var category = link.getAttribute("data-category");
+                    var targetSection = document.getElementById(category);
 
-            if (allowedDomains.includes(currentDomain)) {
-                var navLinks = document.querySelectorAll("nav a");
-
-                navLinks.forEach(function(link) {
-                    link.addEventListener("click", function(event) {
-                        event.preventDefault();
-                        var category = link.getAttribute("data-category");
-                        var targetSection = document.getElementById(category);
-                        if (targetSection) {
-                            targetSection.scrollIntoView({ behavior: "smooth" });
-                        }
-                    });
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: "smooth" });
+                    }
                 });
-            } else {
-                console.error('当前域名不在允许的域名列表中:', currentDomain);
-            }
+            });
         });
     </script>
 </body>

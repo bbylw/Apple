@@ -1,108 +1,366 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>WebNav Hub</title>
- <style>
-    /* ...保留的CSS样式... */
+    <base href="https://g.186404.xyz/Apple/">
+    <title>WebNav Hub</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            scroll-behavior: smooth;
+        }
 
-    @media (max-width: 768px) {
-      .link-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      }
-      .link-card {
-        padding: 15px;
-      }
-      .link-card i {
-        font-size: 24px;
-      }
-      .link-card h3 {
-        font-size: 14px;
-      }
-      .link-card p {
-        font-size: 12px;
-      }
-      .category-title {
-        scroll-margin-top: 100px;
-      }
-    }
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    @media (max-width: 480px) {
-      .link-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      }
+        header h1 {
+            font-size: 20px;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+            position: sticky;
+            top: 34px;
+            z-index: 999;
+        }
+
+        nav a {
+            color: #f5f5f7;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 12px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        main {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+      .hero {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 30px;
+        }
+
       .hero h2 {
-        font-size: 28px;
-      }
-      .hero p {
-        font-size: 16px;
-      }
-      .category-title {
-        font-size: 24px;
-      }
-    }
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(90deg, #007aff, #ff2d55);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    @media (max-width: 320px) {
-      /* 在此处添加针对更小屏幕尺寸的样式 */
-    }
-  </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+      .hero p {
+            font-size: 16px;
+            color: #86868b;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+      .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+      .link-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #1d1d1f;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+      .link-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+      .link-card i {
+            font-size: 28px;
+            margin-bottom: 8px;
+            background: linear-gradient(120deg, #007aff, #ff2d55);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+      .link-card h3 {
+            font-size: 14px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+      .link-card p {
+            font-size: 12px;
+            color: #86868b;
+            line-height: 1.4;
+        }
+
+      .category-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 30px 0 15px;
+            text-align: center;
+            color: #1d1d1f;
+            scroll-margin-top: 100px;
+        }
+
+        footer {
+            background-color: #f5f5f7;
+            color: #86868b;
+            text-align: center;
+            padding: 15px;
+            font-size: 10px;
+        }
+
+        footer nav {
+            margin-top: 8px;
+            background-color: transparent;
+        }
+
+        footer nav a {
+            color: #515154;
+            margin: 0 8px;
+        }
+
+        @media (max-width: 768px) {
+         .link-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+          .link-card {
+                padding: 12px;
+            }
+
+          .link-card i {
+                font-size: 20px;
+            }
+
+          .link-card h3 {
+                font-size: 12px;
+            }
+
+          .link-card p {
+                font-size: 10px;
+            }
+
+          .category-title {
+                scroll-margin-top: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+          .link-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+          .hero h2 {
+                font-size: 24px;
+            }
+
+          .hero p {
+                font-size: 14px;
+            }
+
+          .category-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-<header>
-    <h1>WebNav Hub</h1>
-  </header>
-  <nav>
-    <a href="#ai-search">Ai搜索</a>
-    <a href="#social">社交媒体</a>
-    <a href="#tools">实用工具</a>
-    <a href="#tech-news">科技资讯</a>
-    <a href="#cloud-storage">云存储</a>
-    <a href="#email">电子邮箱</a>
-  </nav>
-  <main>
-    <!-- AI搜索类别链接 -->
-   <section class="link-grid">
-      <a href="https://www.google.com" class="link-card">
-        <i class="fab fa-google"></i>
-        <h3>Google</h3>
-      </a>
-      <a href="https://www.bing.com" class="link-card">
-        <i class="fab fa-microsoft"></i>
-        <h3>Bing</h3>
-      </a>
-      <!-- ...其他AI搜索链接... -->
-    </section>
+    <header>
+        <h1>WebNav Hub</h1>
+    </header>
+    <nav>
+        <a href="#ai-search">Ai 搜索</a>
+        <a href="#social">社交媒体</a>
+        <a href="#tools">实用工具</a>
+        <a href="#tech-news">科技资讯</a>
+        <a href="#cloud-storage">云存储</a>
+        <a href="#email">电子邮箱</a>
+    </nav>
+    <main>
+        <section class="hero">
+            <h2>Your Gateway to the Digital World</h2>
+            <p>轻松访问网络上最重要的目的地。</p>
+        </section>
 
-    <!-- 社交媒体类别链接 -->
-   <section class="link-grid">
-      <a href="https://www.facebook.com" class="link-card">
-        <i class="fab fa-facebook"></i>
-        <h3>Facebook</h3>
-      </a>
-      <a href="https://twitter.com" class="link-card">
-        <i class="fab fa-twitter"></i>
-        <h3>Twitter</h3>
-      </a>
-      <!-- ...其他社交媒体链接... -->
-    </section>
+        <h2 class="category-title" id="ai-search">Ai 搜索</h2>
+        <section class="link-grid">
+            <a href="https://www.google.com" class="link-card">
+                <i class="fab fa-google"></i>
+                <h3>Google</h3>
+            </a>
+            <a href="https://www.bing.com" class="link-card">
+                <i class="fab fa-microsoft"></i>
+                <h3>Bing</h3>
+            </a>
+            <a href="https://websim.ai/" class="link-card">
+                <i class="fas fa-search"></i>
+                <h3>websim</h3>
+            </a>
+            <a href="https://chatgpt.com/" class="link-card">
+                <i class="fab fa-google"></i>
+                <h3>chatgpt</h3>
+            </a>
+            <a href="https://www.doubao.com/chat/" class="link-card">
+                <i class="fas fa-paw"></i>
+                <h3>傻豆包</h3>
+            </a>
+            <a href="https://yuanbao.tencent.com/" class="link-card">
+                <i class="fas fa-robot"></i>
+                <h3>傻元宝</h3>
+            </a>
+            <a href="https://poe.com/" class="link-card">
+                <i class="fas fa-robot"></i>
+                <h3>poe</h3>
+            </a>
+            <a href="https://claude.ai/" class="link-card">
+                <i class="fas fa-robot"></i>
+                <h3>claude</h3>
+            </a>
+            <a href="https://chandler.bet/" class="link-card">
+                <i class="fas fa-robot"></i>
+                <h3>ChandlerAi</h3>
+            </a>
+        </section>
 
-    <!-- 实用工具类别链接 -->
-   <section class="link-grid">
-      <a href="https://translate.google.com" class="link-card">
-        <i class="fas fa-language"></i>
-        <h3>Google翻译</h3>
-      </a>
-      <a href="https://d.186404.xyz/" class="link-card">
-        <i class="fas fa-link"></i>
-        <h3>短链</h3>
-      </a>
-      <!-- ...其他实用工具链接... -->
-    </section>
+        <h2 class="category-title" id="social">社交媒体</h2>
+        <section class="link-grid">
+            <a href="https://www.facebook.com" class="link-card">
+                <i class="fab fa-facebook"></i>
+                <h3>Facebook</h3>
+            </a>
+            <a href="https://twitter.com" class="link-card">
+                <i class="fab fa-twitter"></i>
+                <h3>Twitter</h3>
+            </a>
+            <a href="https://www.instagram.com" class="link-card">
+                <i class="fab fa-instagram"></i>
+                <h3>Instagram</h3>
+            </a>
+            <a href="https://www.linkedin.com" class="link-card">
+                <i class="fab fa-linkedin"></i>
+                <h3>LinkedIn</h3>
+            </a>
+            <a href="https://www.tiktok.com" class="link-card">
+                <i class="fab fa-tiktok"></i>
+                <h3>TikTok</h3>
+            </a>
+            <a href="https://www.reddit.com" class="link-card">
+                <i class="fab fa-reddit"></i>
+                <h3>Reddit</h3>
+            </a>
+            <a href="https://github.com/" class="link-card">
+                <i class="fab fa-github"></i>
+                <h3>GitHub</h3>
+            </a>
+        </section>
 
-    <!-- 科技资讯类别链接 -->
-   <section class="link-grid">
+        <h2 class="category-title" id="tools">实用工具</h2>
+        <section class="link-grid">
+            <a href="https://translate.google.com" class="link-card">
+                <i class="fas fa-language"></i>
+                <h3>Google 翻译</h3>
+            </a>
+            <a href="https://d.186404.xyz/" class="link-card">
+                <i class="fas fa-link"></i>
+                <h3>短链</h3>
+            </a>
+            <a href="https://dynv6.com/" class="link-card">
+                <i class="fas fa-network-wired"></i>
+                <h3>dynv6</h3>
+            </a>
+            <a href="https://fast.com/" class="link-card">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3>网速测试</h3>
+            </a>
+            <a href="https://www.cloudns.net/" class="link-card">
+                <i class="fas fa-cloud"></i>
+                <h3>Cloudns</h3>
+            </a>
+            <a href="https://www.cloudflare.com/zh-cn/" class="link-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Cloudflare</h3>
+            </a>
+            <a href="https://ygpy.net/" class="link-card">
+                <i class="fas fa-user-friends"></i>
+                <h3>一个朋友</h3>
+            </a>
+            <a href="https://notebooklm.google/" class="link-card">
+                <i class="fas fa-book"></i>
+                <h3>谷歌笔记</h3>
+            </a>
+            <a href="https://email.ml/" class="link-card">
+                <i class="fas fa-envelope"></i>
+                <h3>临时邮箱</h3>
+            </a>
+            <a href="https://www.ahhhhfs.com/" class="link-card">
+                <i class="fas fa-blog"></i>
+                <h3>A 姐</h3>
+            </a>
+            <a href="https://ip.sb/" class="link-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>IP 查询</h3>
+            </a>
+            <a href="https://img.186404.xyz/" class="link-card">
+                <i class="fas fa-image"></i>
+                <h3>图床</h3>
+            </a>
+            <a href="https://www.site.ac/" class="link-card">
+                <i class="fas fa-exchange-alt"></i>
+                <h3>Site 域名转发</h3>
+            </a>
+            <a href="https://zh.go-to-library.sk/" class="link-card">
+                <i class="fas fa-book-reader"></i>
+                <h3>Z-Library</h3>
+            </a>
+            <a href="https://nic.us.kg/" class="link-card">
+                <i class="fas fa-globe"></i>
+                <h3>us.kg 域名</h3>
+           </a>
+      <a href="https://www.spaceship.com/zh/" class="link-card">
+        <i class="fas fa-space-shuttle"></i>
+        <h3>Spaceship廉价域名</h3>
+      </a>
+      <a href="https://fontawesome.com/" class="link-card">
+        <i class="fas fa-icons"></i>
+        <h3>FontAwesome图标</h3>
+      </a>
+    </section>
+    
+    <h2 class="category-title" id="tech-news">科技资讯</h2>
+    <section class="link-grid">
       <a href="https://www.techcrunch.com" class="link-card">
         <i class="fas fa-newspaper"></i>
         <h3>TechCrunch</h3>
@@ -111,11 +369,34 @@
         <i class="fas fa-bolt"></i>
         <h3>Wired</h3>
       </a>
-      <!-- ...其他科技资讯链接... -->
+      <a href="https://www.theverge.com" class="link-card">
+        <i class="fas fa-laptop"></i>
+        <h3>The Verge</h3>
+      </a>
+      <a href="https://arstechnica.com" class="link-card">
+        <i class="fas fa-rocket"></i>
+        <h3>Ars Technica</h3>
+      </a>
+      <a href="https://www.engadget.com" class="link-card">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>Engadget</h3>
+      </a>
+      <a href="https://techradar.com" class="link-card">
+        <i class="fas fa-satellite"></i>
+        <h3>TechRadar</h3>
+      </a>
+      <a href="https://b.186404.xyz/" class="link-card">
+        <i class="fas fa-blog"></i>
+        <h3>科技博客</h3>
+      </a>
+      <a href="https://www.cnbeta.com.tw/" class="link-card">
+        <i class="fas fa-info-circle"></i>
+        <h3>cnbeta</h3>
+      </a>
     </section>
-
-    <!-- 云存储类别链接 -->
-   <section class="link-grid">
+    
+    <h2 class="category-title" id="cloud-storage">云存储</h2>
+    <section class="link-grid">
       <a href="https://www.dropbox.com" class="link-card">
         <i class="fas fa-cloud"></i>
         <h3>Dropbox</h3>
@@ -124,11 +405,26 @@
         <i class="fab fa-google-drive"></i>
         <h3>Google Drive</h3>
       </a>
-      <!-- ...其他云存储链接... -->
+      <a href="https://onedrive.live.com" class="link-card">
+        <i class="fab fa-microsoft"></i>
+        <h3>OneDrive</h3>
+      </a>
+      <a href="https://www.box.com" class="link-card">
+        <i class="fas fa-box"></i>
+        <h3>Box</h3>
+      </a>
+      <a href="https://www.mediafire.com" class="link-card">
+        <i class="fas fa-file-alt"></i>
+        <h3>MediaFire</h3>
+      </a>
+      <a href="https://mega.nz" class="link-card">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <h3>MEGA</h3>
+      </a>
     </section>
-
-    <!-- 电子邮箱类别链接 -->
-   <section class="link-grid">
+    
+    <h2 class="category-title" id="email">电子邮箱</h2>
+    <section class="link-grid">
       <a href="https://mail.google.com" class="link-card">
         <i class="fas fa-envelope"></i>
         <h3>Gmail</h3>
@@ -137,11 +433,33 @@
         <i class="fab fa-microsoft"></i>
         <h3>Outlook</h3>
       </a>
-      <!-- ...其他电子邮箱链接... -->
+      <a href="https://22.do/" class="link-card">
+        <i class="fas fa-envelope-open"></i>
+        <h3>GMail临时邮箱</h3>
+      </a>
+      <a href="https://www.agogmail.com/" class="link-card">
+        <i class="fas fa-envelope-square"></i>
+        <h3>临时gMail</h3>
+      </a>
+      <a href="https://www.protonmail.com" class="link-card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>ProtonMail</h3>
+      </a>
+      <a href="https://mail.qq.com" class="link-card">
+        <i class="fab fa-qq"></i>
+        <h3>QQ邮箱</h3>
+      </a>
+      <a href="https://www.emailnator.com/" class="link-card">
+        <i class="fas fa-at"></i>
+        <h3>临时G邮箱</h3>
+      </a>
+      <a href="https://www.linshigmail.com/" class="link-card">
+        <i class="fas fa-mail-bulk"></i>
+        <h3>临时谷歌邮箱</h3>
+      </a>
     </section>
   </main>
-
-<footer>
+  <footer>
     <p>&copy; 2023 WebNav Hub. All rights reserved.</p>
     <nav>
       <a href="#">隐私政策</a>
@@ -149,5 +467,4 @@
       <a href="#">联系我们</a>
     </nav>
   </footer>
-</body>
-</html>
+</body></html

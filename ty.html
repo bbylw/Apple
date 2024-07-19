@@ -1,190 +1,194 @@
-
-<html><head><base href="https://webnavhub.com/"><title>WebNav Hub</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #0d0d0d;
-    color: #fff;
-  }
-  header {
-    background-color: #000;
-    padding: 15px 20px;
-    text-align: center;
-  }
-  header h1 {
-    font-size: 36px;
-    font-weight: bold;
-    color: #ff9000;
-    margin: 0;
-    text-transform: uppercase;
-  }
-  nav {
-    background-color: #1a1a1a;
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  nav li {
-    margin: 5px 10px;
-  }
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 8px 15px;
-    border-radius: 20px;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  nav a:hover, nav a.active {
-    background-color: #ff9000;
-    color: #000;
-  }
-  main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  .category-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 40px 0 20px;
-    color: #ff9000;
-    border-left: 4px solid #ff9000;
-    padding-left: 10px;
-    text-transform: uppercase;
-  }
-  .link-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 15px;
-    margin-bottom: 40px;
-  }
-  .link-card {
-    background-color: #1a1a1a;
-    border-radius: 5px;
-    padding: 15px;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-  .link-card:hover {
-    background-color: #2a2a2a;
-    transform: translateY(-5px);
-  }
-  .link-card i {
-    font-size: 28px;
-    margin-bottom: 8px;
-    color: #ff9000;
-  }
-  .link-card h3 {
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #fff;
-  }
-  footer {
-    background-color: #000;
-    color: #ccc;
-    text-align: center;
-    padding: 20px;
-    font-size: 12px;
-  }
-  footer nav {
-    margin-top: 10px;
-    background-color: transparent;
-  }
-  footer nav a {
-    color: #ccc;
-    margin: 0 10px;
-    font-size: 12px;
-  }
-  @media (max-width: 768px) {
-    .link-grid {
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+<html>
+<head>
+  <base href="https://webnavhub.com/">
+  <title>WebNav Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #0d0d0d;
+      color: #fff;
+    }
+    header {
+      background-color: #000;
+      padding: 15px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 36px;
+      font-weight: bold;
+      color: #ff9000;
+      margin: 0;
+      text-transform: uppercase;
+    }
+    nav {
+      background-color: #1a1a1a;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav li {
+      margin: 5px 10px;
     }
     nav a {
-      font-size: 16px;
-      padding: 6px 12px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 8px 15px;
+      border-radius: 20px;
+      transition: background-color 0.3s, color 0.3s;
     }
-  }
-</style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var navLinks = document.querySelectorAll('nav a');
-  
-  navLinks.forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      navLinks.forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-      var targetId = this.getAttribute('href').split('#')[1];
-      var targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-        
-        var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '#' + targetId;
-        window.history.pushState({path: newUrl}, '', newUrl);
+    nav a:hover, nav a.active {
+      background-color: #ff9000;
+      color: #000;
+    }
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .category-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 40px 0 20px;
+      color: #ff9000;
+      border-left: 4px solid #ff9000;
+      padding-left: 10px;
+      text-transform: uppercase;
+    }
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+    .link-card {
+      background-color: #1a1a1a;
+      border-radius: 5px;
+      padding: 15px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .link-card:hover {
+      background-color: #2a2a2a;
+      transform: translateY(-5px);
+    }
+    .link-card i {
+      font-size: 28px;
+      margin-bottom: 8px;
+      color: #ff9000;
+    }
+    .link-card h3 {
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: #fff;
+    }
+    footer {
+      background-color: #000;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+    }
+    footer nav {
+      margin-top: 10px;
+      background-color: transparent;
+    }
+    footer nav a {
+      color: #ccc;
+      margin: 0 10px;
+      font-size: 12px;
+    }
+    @media (max-width: 768px) {
+      .link-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
       }
-    });
-  });
+      nav a {
+        font-size: 16px;
+        padding: 6px 12px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var navLinks = document.querySelectorAll('nav a');
 
-  function handleHashChange() {
-    var hash = window.location.hash;
-    if (hash) {
-      var targetElement = document.getElementById(hash.substring(1));
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-        var activeLink = document.querySelector('nav a[href="' + hash + '"]');
-        if (activeLink) {
+      navLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
           navLinks.forEach(l => l.classList.remove('active'));
-          activeLink.classList.add('active');
+          this.classList.add('active');
+          var targetId = this.getAttribute('href').split('#')[1];
+          var targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+
+            var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '#' + targetId;
+            window.history.pushState({path: newUrl}, '', newUrl);
+          }
+        });
+      });
+
+      function handleHashChange() {
+        var hash = window.location.hash;
+        if (hash) {
+          var targetElement = document.getElementById(hash.substring(1));
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+            var activeLink = document.querySelector('nav a[href="' + hash + '"]');
+            if (activeLink) {
+              navLinks.forEach(l => l.classList.remove('active'));
+              activeLink.classList.add('active');
+            }
+          }
         }
       }
-    }
-  }
 
-  window.addEventListener('hashchange', handleHashChange);
-  handleHashChange();
+      window.addEventListener('hashchange', handleHashChange);
+      handleHashChange();
 
-  var linkCards = document.querySelectorAll('.link-card');
-  linkCards.forEach(function(card) {
-    card.addEventListener('click', function() {
-      window.open(this.getAttribute('href'), '_blank');
+      var linkCards = document.querySelectorAll('.link-card');
+      linkCards.forEach(function(card) {
+        card.addEventListener('click', function() {
+          window.open(this.getAttribute('href'), '_blank');
+        });
+      });
     });
-  });
-});
-</script>
+  </script>
 </head>
 <body>
   <header>
     <h1>WebNav Hub</h1>
   </header>
   <nav>
-    <a href="#ai-search">Ai搜索</a>
-    <a href="#social">社交媒体</a>
-    <a href="#tools">实用工具</a>
-    <a href="#tech-news">科技资讯</a>
-    <a href="#cloud-storage">云存储</a>
-    <a href="#email">电子邮箱</a>
+    <ul>
+      <li><a href="#ai-search">Ai搜索</a></li>
+      <li><a href="#social">社交媒体</a></li>
+      <li><a href="#tools">实用工具</a></li>
+      <li><a href="#tech-news">科技资讯</a></li>
+      <li><a href="#cloud-storage">云存储</a></li>
+      <li><a href="#email">电子邮箱</a></li>
+    </ul>
   </nav>
   <main>
     <section class="hero">
       <h2>Your Gateway to the Digital World</h2>
       <p>轻松访问网络上最重要的目的地。</p>
     </section>
-    
+
     <h2 class="category-title" id="ai-search">Ai搜索</h2>
     <section class="link-grid">
       <a href="https://www.google.com" class="link-card">
@@ -224,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <h3>ChandlerAi</h3>
       </a>
     </section>
-    
+
     <h2 class="category-title" id="social">社交媒体</h2>
     <section class="link-grid">
       <a href="https://www.facebook.com" class="link-card">
@@ -245,8 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </a>
       <a href="https://www.tiktok.com" class="link-card">
         <i class="fab fa-tiktok"></i>
-        <h3>TikTok</h3>
-      </a>
+        <h3>TikTok</      </a>
       <a href="https://www.reddit.com" class="link-card">
         <i class="fab fa-reddit"></i>
         <h3>Reddit</h3>
@@ -256,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <h3>GitHub</h3>
       </a>
     </section>
-    
+
     <h2 class="category-title" id="tools">实用工具</h2>
     <section class="link-grid">
       <a href="https://translate.google.com" class="link-card">
@@ -328,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <h3>FontAwesome图标</h3>
       </a>
     </section>
-    
+
     <h2 class="category-title" id="tech-news">科技资讯</h2>
     <section class="link-grid">
       <a href="https://www.techcrunch.com" class="link-card">
@@ -364,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <h3>cnbeta</h3>
       </a>
     </section>
-    
+
     <h2 class="category-title" id="cloud-storage">云存储</h2>
     <section class="link-grid">
       <a href="https://www.dropbox.com" class="link-card">
@@ -392,7 +395,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <h3>MEGA</h3>
       </a>
     </section>
-    
+
     <h2 class="category-title" id="email">电子邮箱</h2>
     <section class="link-grid">
       <a href="https://mail.google.com" class="link-card">
@@ -437,4 +440,5 @@ document.addEventListener('DOMContentLoaded', function() {
       <a href="#">联系我们</a>
     </nav>
   </footer>
-</body></html>
+</body>
+</html>

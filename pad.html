@@ -16,32 +16,35 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
         header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
             background-color: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(10px);
             z-index: 1;
         }
-        header button, header input {
-            border: none;
-            outline: none;
-            color: white;
-            font-size: 16px;
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+            color: #fff;
         }
-        header button {
-            background: none;
-            cursor: pointer;
+        header nav {
+            display: flex;
+            align-items: center;
         }
-        header input {
-            flex-grow: 1;
+        header nav a {
             margin-left: 20px;
-            padding: 5px 15px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        header nav a:hover {
+            color: #ccc;
         }
         main {
             display: flex;
@@ -102,8 +105,15 @@
 </head>
 <body>
     <header>
-        <button onclick="goBack()">返回 (←)</button>
-        <input type="text" placeholder="搜索 (🔍)">
+        <h1>导航页</h1>
+        <nav>
+            <a href="#">常用网站</a>
+            <a href="#">购物</a>
+            <a href="#">新闻</a>
+            <a href="#">娱乐</a>
+            <a href="#">技术</a>
+            <a href="#">学习</a>
+        </nav>
     </header>
     <main>
         <section class="folder">

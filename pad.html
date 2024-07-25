@@ -10,7 +10,8 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            background-color: #1c1c1e;
+            color: #fff;
         }
         header {
             display: flex;
@@ -41,36 +42,45 @@
             justify-content: center;
         }
         .folder {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            padding: 10px;
-            width: 280px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 15px;
+            padding: 15px;
+            width: 300px;
+            backdrop-filter: blur(10px);
         }
         .folder h2 {
             margin-top: 0;
-            font-size: 20px;
+            font-size: 24px;
             text-align: center;
         }
         .site {
             display: flex;
             align-items: center;
-            margin: 10px 0;
+            margin: 15px 0;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            transition: background-color 0.3s;
+        }
+        .site:hover {
+            background-color: rgba(255, 255, 255, 0.3);
         }
         .site a {
             display: flex;
             align-items: center;
             text-decoration: none;
-            color: black;
+            color: white;
+            width: 100%;
         }
         .site i {
-            font-size: 32px;
-            margin-right: 10px;
+            font-size: 36px;
+            margin-right: 15px;
         }
         .site p {
             margin: 0;
-            font-size: 16px;
+            font-size: 18px;
         }
     </style>
 </head>

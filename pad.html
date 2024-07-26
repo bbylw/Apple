@@ -35,6 +35,13 @@
     font-size: 14px;
   }
 
+  .main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
   .container {
     flex-grow: 1;
     display: flex;
@@ -147,13 +154,28 @@
   }
 
   @media (max-width: 480px) {
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
     .status-bar {
       font-size: 12px;
       padding: 5px 10px;
     }
 
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      height: calc(100vh - 30px); /* Adjust based on status bar height */
+    }
+
     .container {
+      flex: 1;
       padding: 10px;
+      overflow-y: auto;
+      padding-bottom: 80px; /* Add padding to accommodate the dock */
     }
 
     .app-icon {
@@ -169,13 +191,32 @@
       font-size: 10px;
     }
 
+    .dock {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow-x: auto;
+      justify-content: flex-start;
+      padding: 10px 5px;
+      border-radius: 20px 20px 0 0;
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+
     .dock .app-icon {
       width: 50px;
       height: 50px;
+      margin: 0 5px;
     }
 
     .dock .app-icon i {
       font-size: 20px;
+    }
+
+    .dock .app-name {
+      display: none;
     }
 
     .category-title {
@@ -190,8 +231,10 @@
     <span id="clock"></span>
     <span id="battery">100%</span>
   </div>
-  <div class="container" id="app-container"></div>
-  <div class="dock" id="category-dock"></div>
+  <div class="main-content">
+    <div class="container" id="app-container"></div>
+    <div class="dock" id="category-dock"></div>
+  </div>
 
   <script>
     const appContainer = document.getElementById('app-container');
@@ -269,6 +312,15 @@
         category.classList.remove('active');
       }
       document.getElementById(categoryName).classList.add('active');
+
+      // 更新底部导航栏的活跃状态
+      const dockIcons = categoryDock.getElementsByClassName('app-icon');
+      for (let icon of dockIcons) {
+        icon.classList.remove('active');
+        if (icon.dataset.category === categoryName) {
+          icon.classList.add('active');
+        }
+      }
     }
 
     Object.keys(categories).forEach(categoryName => {
@@ -296,6 +348,7 @@
       const dockIcon = document.createElement('a');
       dockIcon.className = 'app-icon';
       dockIcon.href = '#';
+      dockIcon.dataset.category = categoryName;
       dockIcon.innerHTML = `
         <i class="${category.icon}"></i>
         <span class="app-name">${category.name}</span>
@@ -328,5 +381,80 @@
     updateBattery();
     setInterval(updateClock, 1000);
     setInterval(updateBattery, 60000);
+
+    // 添加滚动到合适位置的函数
+    function scrollDockToCenter(clickedIcon) {
+      const dock = document.getElementById('category-dock');
+      const dockRect = dock.getBoundingClientRect();
+      const iconRect = clickedIcon.getBoundingClientRect();
+      const scrollLeft = iconRect.left - dockRect.left - (dockRect.width / 2) + (iconRect.width / 2);
+      dock.scrollTo({
+        left: dock.scrollLeft + scrollLeft,
+        behavior: 'smooth'
+      });
+    }
+
+    // 为每个dock图标添加点击事件，以在移动设备上居中显示
+    document.querySelectorAll('#category-dock .app-icon').forEach(icon => {
+      icon.addEventListener('click', function(e) {
+        if (window.innerWidth <= 480) {
+          scrollDockToCenter(this);
+        }
+      });
+    });
+
+    // 添加移动设备上的滑动功能
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    categoryDock.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    categoryDock.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+      if (touchEndX < touchStartX) {
+        // 向左滑动
+        const nextIcon = document.querySelector('#category-dock .app-icon.active').nextElementSibling;
+        if (nextIcon) {
+          nextIcon.click();
+        }
+      }
+      if (touchEndX > touchStartX) {
+        // 向右滑动
+        const prevIcon = document.querySelector('#category-dock .app-icon.active').previousElementSibling;
+        if (prevIcon) {
+          prevIcon.click();
+        }
+      }
+    }
+
+    // 添加滚动监听，以调整底部导航栏的显示
+    let lastScrollTop = 0;
+    const dock = document.getElementById('category-dock');
+    const container = document.querySelector('.container');
+
+    container.addEventListener('scroll', () => {
+      let st = container.scrollTop;
+      if (st > lastScrollTop) {
+        // 向下滚动
+        dock.style.transform = 'translateY(100%)';
+      } else {
+        // 向上滚动
+        dock.style.transform = 'translateY(0)';
+      }
+      lastScrollTop = st <= 0 ? 0 : st;
+    }, false);
+
+    // 添加触摸结束事件，以确保底部导航栏在滚动停止时显示
+    container.addEventListener('touchend', () => {
+      setTimeout(() => {
+        dock.style.transform = 'translateY(0)';
+      }, 300);
+    }, false);
   </script>
 </body></html>

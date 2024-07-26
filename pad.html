@@ -1,264 +1,250 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iPadOS导航页</title>
+    <title>全球最流行的网站</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('https://www.apple.com/v/ipados/home/ar/images/overview/hero_endframe__dtndik2f699m_large.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
+            background-color: #f5f5f5;
         }
-        header {
+        .header {
+            background-color: #fff;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            z-index: 1;
         }
-        header h1 {
-            font-size: 24px;
+        .header h1 {
             margin: 0;
-            color: #fff;
+            font-size: 24px;
         }
-        header nav {
-            display: flex;
-            align-items: center;
+        .search-bar {
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
-        header nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #fff;
-            font-size: 18px;
-            transition: color 0.3s;
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 10px;
         }
-        header nav a:hover {
-            color: #ccc;
-        }
-        main {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 20px;
-            overflow-y: auto;
-            flex-grow: 1;
-        }
-        .folder {
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            margin: 15px;
-            padding: 15px;
-            width: 280px;
-            transition: transform 0.3s, background-color 0.3s;
+        .grid-item {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
             text-align: center;
         }
-        .folder:hover {
-            transform: scale(1.05);
-            background-color: rgba(0, 0, 0, 0.7);
+        .grid-item i {
+            font-size: 48px;
+            color: #007bff;
         }
-        .folder h2 {
-            font-size: 24px;
-            margin: 0;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .site {
-            display: flex;
-            align-items: center;
-            margin: 10px 0;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            transition: background-color 0.3s;
-        }
-        .site:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-        .site a {
-            display: flex;
-            align-items: center;
+        .grid-item a {
             text-decoration: none;
-            color: white;
-            width: 100%;
-        }
-        .site i {
-            font-size: 24px;
-            margin-right: 15px;
-        }
-        .site p {
-            margin: 0;
-            font-size: 18px;
+            color: #000;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>导航页</h1>
-        <nav>
-            <a href="#">常用网站</a>
-            <a href="#">购物</a>
-            <a href="#">新闻</a>
-            <a href="#">娱乐</a>
-            <a href="#">技术</a>
-            <a href="#">学习</a>
-        </nav>
-    </header>
-    <main>
-        <section class="folder">
-            <h2>常用网站</h2>
-            <div class="site">
-                <a href="https://www.google.com">
-                    <i class="fab fa-google"></i>
-                    <p>Google</p>
-                </a>
-            </div>
-            <div class="site">
-                <a href="https://www.youtube.com">
-                    <i class="fab fa-youtube"></i>
-                    <p>YouTube</p>
-                </a>
-            </div>
-            <div class="site">
-                <a href="https://www.facebook.com">
-                    <i class="fab fa-facebook"></i>
-                    <p>Facebook</p>
-                </a>
-            </div>
-            <div class="site">
-                <a href="https://www.twitter.com">
-                    <i class="fab fa-twitter"></i>
-                    <p>Twitter</p>
-                </a>
-            </div>
-            <div class="site">
-                <a href="https://www.instagram.com">
-                    <i class="fab fa-instagram"></i>
-                    <p>Instagram</p>
-                </a>
-            </div>
-        </section>
-        <section class="folder">
-            <h2>购物</h2>
-            <div class="site">
-                <a href="https://www.amazon.com">
-                    <i class="fab fa-amazon"></i>
-                    <p>Amazon</p>
-                </a>
-            </div>
-            <div class="site">
-                <a href="https://www.ebay.com">
-                    <i class="fab fa-ebay"></i>
-                    <p>eBay</p>
-                </a>
-            </div>
-            <div class="site">
-                <a href="https://www.alibaba.com">
-                    <i class="fab fa-alibaba"></i>
-                    <p>Alibaba</p>
-                </a>
-            </div>
-        </section>
-        <section class="folder">
-            <h2>新闻</h2>
-            <div class="site">
-                <a href="https://www.bbc.com">
-                    <i class="fas fa-globe"></i>
-                    <p>BBC</p>
-                </a>
-            </div>
-            <div class="site">
-                <a href="https://www.cnn.com">
-                    <i class="fas fa-newspaper"></i>
-                    <p>CNN</p>
-                </a>
-            </div>
-            <div class="site">
-                <a href="https://www.nytimes.com">
-                    <i class="fas fa-newspaper"></i>
-                    <p>New York Times</p>
-                </a>
-            </div>
-        </section>
-        <section class="folder">
-            <h2>娱乐</h2>
-            <div class="site">
-                <a href="https://www.netflix.com">
-                    <i class="fas fa-film"></i>
-                    <p>Netflix</p>
-                </a>
-            </div>
-            <div class="site">
-                <a href="https://www.spotify.com">
-                    <i class="fas fa-music"></i>
-                    <p>Spotify</p>
-                </a>
-            </div>
-            <div class="site">
-                <a href="https://www.twitch.tv">
-                    <i class="fab fa-twitch"></i>
-                    <p>Twitch</p>
-                </a>
-            </div>
-        </section>
-        <section class="folder">
-            <h2>技术</h2>
-            <div class="site">
-                <a href="https://stackoverflow.com">
-                    <i class="fas fa-code"></i>
-                    <p>Stack Overflow</p>
-                </a>
-            </div>
-            <div class="site">
-                <a href="https://github.com">
-                    <i class="fab fa-github"></i>
-                    <p>GitHub</p>
-                </a>
-            </div>
-            <div class="site">
-                <a href="https://techcrunch.com">
-                    <i class="fas fa-laptop"></i>
-                    <p>TechCrunch</p>
-                </a>
-            </div>
-        </section>
-        <section class="folder">
-            <h2>学习</h2>
-            <div class="site">
-                <a href="https://www.coursera.org">
-                    <i class="fas fa-graduation-cap"></i>
-                    <p>Coursera</p>
-                </a>
-            </div>
-            <div class="site">
-                <a href="https://www.edx.org">
-                    <i class="fas fa-book"></i>
-                    <p>edX</p>
-                </a>
-            </div>
-            <div class="site">
-                <a href="https://www.khanacademy.org">
-                    <i class="fas fa-school"></i>
-                    <p>Khan Academy</p>
-                </a>
-            </div>
-        </section>
-    </main>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+    <div class="header">
+        <h1>全球最流行的网站</h1>
+        <input type="text" class="search-bar" placeholder="搜索网站">
+    </div>
+    <div class="grid-container">
+        <div class="grid-item">
+            <a href="https://www.google.com">
+                <i class="fab fa-google"></i>
+                <p>Google</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.youtube.com">
+                <i class="fab fa-youtube"></i>
+                <p>YouTube</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.facebook.com">
+                <i class="fab fa-facebook"></i>
+                <p>Facebook</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.twitter.com">
+                <i class="fab fa-twitter"></i>
+                <p>Twitter</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.instagram.com">
+                <i class="fab fa-instagram"></i>
+                <p>Instagram</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.baidu.com">
+                <i class="fas fa-search"></i>
+                <p>Baidu</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.wikipedia.org">
+                <i class="fab fa-wikipedia-w"></i>
+                <p>Wikipedia</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.yahoo.com">
+                <i class="fab fa-yahoo"></i>
+                <p>Yahoo</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.reddit.com">
+                <i class="fab fa-reddit"></i>
+                <p>Reddit</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.qq.com">
+                <i class="fab fa-qq"></i>
+                <p>QQ</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.taobao.com">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Taobao</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.amazon.com">
+                <i class="fab fa-amazon"></i>
+                <p>Amazon</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.tmall.com">
+                <i class="fas fa-shopping-cart"></i>
+                <p>TMall</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.sohu.com">
+                <i class="fas fa-newspaper"></i>
+                <p>Sohu</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.jd.com">
+                <i class="fas fa-shopping-cart"></i>
+                <p>JD</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.sina.com.cn">
+                <i class="fas fa-newspaper"></i>
+                <p>Sina</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.live.com">
+                <i class="fas fa-envelope"></i>
+                <p>Live</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.netflix.com">
+                <i class="fab fa-netflix"></i>
+                <p>Netflix</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.microsoft.com">
+                <i class="fab fa-microsoft"></i>
+                <p>Microsoft</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.linkedin.com">
+                <i class="fab fa-linkedin"></i>
+                <p>LinkedIn</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.ebay.com">
+                <i class="fab fa-ebay"></i>
+                <p>eBay</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.yandex.ru">
+                <i class="fas fa-search"></i>
+                <p>Yandex</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.vk.com">
+                <i class="fab fa-vk"></i>
+                <p>VK</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.mail.ru">
+                <i class="fas fa-envelope"></i>
+                <p>Mail.ru</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.ok.ru">
+                <i class="fab fa-odnoklassniki"></i>
+                <p>OK.ru</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.twitch.tv">
+                <i class="fab fa-twitch"></i>
+                <p>Twitch</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.pinterest.com">
+                <i class="fab fa-pinterest"></i>
+                <p>Pinterest</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.apple.com">
+                <i class="fab fa-apple"></i>
+                <p>Apple</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.whatsapp.com">
+                <i class="fab fa-whatsapp"></i>
+                <p>WhatsApp</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.microsoftonline.com">
+                <i class="fab fa-microsoft"></i>
+                <p>Microsoft Online</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.office.com">
+                <i class="fab fa-microsoft"></i>
+                <p>Office</p>
+            </a>
+        </div>
+    </div>
 </body>
 </html>

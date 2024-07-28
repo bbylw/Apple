@@ -1,0 +1,567 @@
+
+<html><head><base href="https://appletvui.example.com/"><title>iOS 风格全球网站导航</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<style>
+:root {
+  --app-icon-size: 60px;
+  --app-icon-margin: 10px;
+  --app-name-font-size: 11px;
+}
+
+body {
+  background-color: #f2f2f7;
+  color: #000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.app-icon {
+  width: var(--app-icon-size);
+  height: var(--app-icon-size);
+  margin: var(--app-icon-margin);
+  border-radius: 22%;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.app-icon:hover, .app-icon:focus {
+  transform: scale(1.05);
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.time {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.battery {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.battery-icon {
+  width: 25px;
+  height: 12px;
+  background-color: #000;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  margin-right: 5px;
+  position: relative;
+}
+
+.battery-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -3px;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 4px;
+  background-color: #000;
+  border-radius: 0 1px 1px 0;
+}
+
+.battery-level {
+  height: 100%;
+  background-color: #32cd32;
+  border-radius: 1px;
+  transition: width 0.3s ease;
+}
+
+.app-name {
+  text-align: center;
+  margin-top: 5px;
+  font-size: var(--app-name-font-size);
+  color: #000;
+}
+
+.icon {
+  font-size: calc(var(--app-icon-size) * 0.5);
+}
+
+.category-nav {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  background-color: #fff;
+  padding: 10px 0;
+  position: sticky;
+  top: 44px;
+  z-index: 999;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  width: 100%;
+}
+
+.category-nav-container {
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.category-btn {
+  background: none;
+  border: none;
+  color: #007aff;
+  font-size: 14px;
+  margin: 0 15px;
+  padding: 5px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.category-btn.active {
+  color: #000;
+  font-weight: bold;
+}
+
+.category {
+  padding-top: 20px;
+  margin-top: -20px;
+  width: 100%;
+}
+
+h2 {
+  font-size: 22px;
+  color: #000;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--app-icon-size), 1fr));
+  gap: calc(var(--app-icon-margin) * 2);
+  padding: 15px 0;
+  justify-items: center;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --app-icon-size: 50px;
+    --app-icon-margin: 8px;
+    --app-name-font-size: 10px;
+  }
+  
+  .category-btn {
+    font-size: 12px;
+    margin: 0 10px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+  
+  .top-bar {
+    padding: 10px;
+  }
+  
+  .container {
+    padding: 10px;
+  }
+  
+  .app-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* iPhone 14 specific styles */
+@media only screen 
+  and (device-width: 390px) 
+  and (device-height: 844px) 
+  and (-webkit-device-pixel-ratio: 3) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .top-bar {
+    padding-top: calc(env(safe-area-inset-top) + 10px);
+  }
+  
+  .category-nav {
+    top: calc(44px + env(safe-area-inset-top));
+  }
+  
+  :root {
+    --app-icon-size: 60px;
+    --app-icon-margin: 10px;
+    --app-name-font-size: 11px;
+  }
+  
+  .app-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .container {
+    padding: 20px 16px;
+  }
+  
+  .category-btn {
+    font-size: 14px;
+  }
+  
+  h2 {
+    font-size: 22px;
+  }
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="top-bar">
+  <div class="time" id="current-time">12:00</div>
+  <div class="battery">
+    <div class="battery-icon">
+      <div class="battery-level" id="battery-level"></div>
+    </div>
+    <span id="battery-percentage">100%</span>
+  </div>
+</div>
+
+<div class="category-nav">
+  <div class="category-nav-container">
+    <button class="category-btn" data-category="social">社交媒体</button>
+    <button class="category-btn" data-category="entertainment">娱乐</button>
+    <button class="category-btn" data-category="shopping">购物</button>
+    <button class="category-btn" data-category="productivity">生产力</button>
+    <button class="category-btn" data-category="education">教育</button>
+    <button class="category-btn" data-category="news">新闻</button>
+    <button class="category-btn" data-category="tech">科技</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="category" id="social">
+    <h2>社交媒体</h2>
+    <div class="app-grid">
+      <a href="https://www.facebook.com/" class="app-icon" style="background-color: #1877f2;">
+        <i class="icon fab fa-facebook" style="color: #fff;"></i>
+        <div class="app-name">Facebook</div>
+      </a>
+      <a href="https://twitter.com/" class="app-icon" style="background-color: #1da1f2;">
+        <i class="icon fab fa-twitter" style="color: #fff;"></i>
+        <div class="app-name">Twitter</div>
+      </a>
+      <a href="https://www.instagram.com/" class="app-icon" style="background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);">
+        <i class="icon fab fa-instagram" style="color: #fff;"></i>
+        <div class="app-name">Instagram</div>
+      </a>
+      <a href="https://www.linkedin.com/" class="app-icon" style="background-color: #0077b5;">
+        <i class="icon fab fa-linkedin" style="color: #fff;"></i>
+        <div class="app-name">LinkedIn</div>
+      </a>
+      <a href="https://www.reddit.com/" class="app-icon" style="background-color: #ff4500;">
+        <i class="icon fab fa-reddit" style="color: #fff;"></i>
+        <div class="app-name">Reddit</div>
+      </a>
+      <a href="https://www.pinterest.com/" class="app-icon" style="background-color: #e60023;">
+        <i class="icon fab fa-pinterest" style="color: #fff;"></i>
+        <div class="app-name">Pinterest</div>
+      </a>
+      <a href="https://www.tumblr.com/" class="app-icon" style="background-color: #35465c;">
+        <i class="icon fab fa-tumblr" style="color: #fff;"></i>
+        <div class="app-name">Tumblr</div>
+      </a>
+      <a href="https://www.snapchat.com/" class="app-icon" style="background-color: #fffc00;">
+        <i class="icon fab fa-snapchat" style="color: #000;"></i>
+        <div class="app-name">Snapchat</div>
+      </a>
+    </div>
+  </div>
+  
+  <div class="category" id="entertainment">
+    <h2>娱乐</h2>
+    <div class="app-grid">
+      <a href="https://www.youtube.com/" class="app-icon" style="background-color: #ff0000;">
+        <i class="icon fab fa-youtube" style="color: #fff;"></i>
+        <div class="app-name">YouTube</div>
+      </a>
+      <a href="https://www.netflix.com/" class="app-icon" style="background-color: #e50914;">
+        <i class="icon fas fa-film" style="color: #fff;"></i>
+        <div class="app-name">Netflix</div>
+      </a>
+      <a href="https://www.spotify.com/" class="app-icon" style="background-color: #1db954;">
+        <i class="icon fab fa-spotify" style="color: #fff;"></i>
+        <div class="app-name">Spotify</div>
+      </a>
+      <a href="https://www.twitch.tv/" class="app-icon" style="background-color: #9146ff;">
+        <i class="icon fab fa-twitch" style="color: #fff;"></i>
+        <div class="app-name">Twitch</div>
+      </a>
+      <a href="https://www.tiktok.com/" class="app-icon" style="background-color: #000000;">
+        <i class="icon fab fa-tiktok" style="color: #fff;"></i>
+        <div class="app-name">TikTok</div>
+      </a>
+      <a href="https://www.hulu.com/" class="app-icon" style="background-color: #1ce783;">
+        <i class="icon fas fa-tv" style="color: #000;"></i>
+        <div class="app-name">Hulu</div>
+      </a>
+      <a href="https://www.disneyplus.com/" class="app-icon" style="background-color: #0063e5;">
+        <i class="icon fas fa-star" style="color: #fff;"></i>
+        <div class="app-name">Disney+</div>
+      </a>
+      <a href="https://www.primevideo.com/" class="app-icon" style="background-color: #00a8e1;">
+        <i class="icon fab fa-amazon" style="color: #fff;"></i>
+        <div class="app-name">Prime Video</div>
+      </a>
+    </div>
+  </div>
+  
+  <div class="category" id="shopping">
+    <h2>购物</h2>
+    <div class="app-grid">
+      <a href="https://www.amazon.com/" class="app-icon" style="background-color: #ff9900;">
+        <i class="icon fab fa-amazon" style="color: #000;"></i>
+        <div class="app-name">Amazon</div>
+      </a>
+      <a href="https://www.ebay.com/" class="app-icon" style="background-color: #e53238;">
+        <i class="icon fab fa-ebay" style="color: #fff;"></i>
+        <div class="app-name">eBay</div>
+      </a>
+      <a href="https://www.aliexpress.com/" class="app-icon" style="background-color: #ff4747;">
+        <i class="icon fas fa-shopping-bag" style="color: #fff;"></i>
+        <div class="app-name">AliExpress</div>
+      </a>
+      <a href="https://www.walmart.com/" class="app-icon" style="background-color: #0071ce;">
+        <i class="icon fas fa-store" style="color: #fff;"></i>
+        <div class="app-name">Walmart</div>
+      </a>
+      <a href="https://www.etsy.com/" class="app-icon" style="background-color: #f1641e;">
+        <i class="icon fab fa-etsy" style="color: #fff;"></i>
+        <div class="app-name">Etsy</div>
+      </a>
+    </div>
+  </div>
+  
+  <div class="category" id="productivity">
+    <h2>生产力</h2>
+    <div class="app-grid">
+      <a href="https://www.google.com/gmail/" class="app-icon" style="background-color: #d44638;">
+        <i class="icon fas fa-envelope" style="color: #fff;"></i>
+        <div class="app-name">Gmail</div>
+      </a>
+      <a href="https://calendar.google.com/" class="app-icon" style="background-color: #4285f4;">
+        <i class="icon far fa-calendar-alt" style="color: #fff;"></i>
+        <div class="app-name">Google Calendar</div>
+      </a>
+      <a href="https://www.dropbox.com/" class="app-icon" style="background-color: #0061ff;">
+        <i class="icon fab fa-dropbox" style="color: #fff;"></i>
+        <div class="app-name">Dropbox</div>
+      </a>
+      <a href="https://evernote.com/" class="app-icon" style="background-color: #00a82d;">
+        <i class="icon fas fa-sticky-note" style="color: #fff;"></i>
+        <div class="app-name">Evernote</div>
+      </a>
+      <a href="https://slack.com/" class="app-icon" style="background-color: #4a154b;">
+        <i class="icon fab fa-slack" style="color: #fff;"></i>
+        <div class="app-name">Slack</div>
+      </a>
+    </div>
+  </div>
+  
+  <div class="category" id="education">
+    <h2>教育</h2>
+    <div class="app-grid">
+      <a href="https://www.coursera.org/" class="app-icon" style="background-color: #0056D2;">
+        <i class="icon fas fa-graduation-cap" style="color: #fff;"></i>
+        <div class="app-name">Coursera</div>
+      </a>
+      <a href="https://www.edx.org/" class="app-icon" style="background-color: #02262B;">
+        <i class="icon fas fa-book" style="color: #fff;"></i>
+        <div class="app-name">edX</div>
+      </a>
+      <a href="https://www.udemy.com/" class="app-icon" style="background-color: #EA5252;">
+        <i class="icon fas fa-chalkboard-teacher" style="color: #fff;"></i>
+        <div class="app-name">Udemy</div>
+      </a>
+      <a href="https://www.duolingo.com/" class="app-icon" style="background-color: #58CC02;">
+        <i class="icon fas fa-language" style="color: #fff;"></i>
+        <div class="app-name">Duolingo</div>
+      </a>
+      <a href="https://www.khanacademy.org/" class="app-icon" style="background-color: #14BF96;">
+        <i class="icon fas fa-university" style="color: #fff;"></i>
+        <div class="app-name">Khan Academy</div>
+      </a>
+    </div>
+  </div>
+  
+  <div class="category" id="news">
+    <h2>新闻</h2>
+    <div class="app-grid">
+      <a href="https://www.bbc.com/news" class="app-icon" style="background-color: #bb1919;">
+        <i class="icon fas fa-newspaper" style="color: #fff;"></i>
+        <div class="app-name">BBC News</div>
+      </a>
+      <a href="https://www.cnn.com/" class="app-icon" style="background-color: #cc0000;">
+        <i class="icon fas fa-newspaper" style="color: #fff;"></i>
+        <div class="app-name">CNN</div>
+      </a>
+      <a href="https://www.nytimes.com/" class="app-icon" style="background-color: #000000;">
+        <i class="icon far fa-newspaper" style="color: #fff;"></i>
+        <div class="app-name">New York Times</div>
+      </a>
+      <a href="https://www.reuters.com/" class="app-icon" style="background-color: #ff8000;">
+        <i class="icon fas fa-globe" style="color: #fff;"></i>
+        <div class="app-name">Reuters</div>
+      </a>
+      <a href="https://www.theguardian.com/" class="app-icon" style="background-color: #052962;">
+        <i class="icon fas fa-shield-alt" style="color: #fff;"></i>
+        <div class="app-name">The Guardian</div>
+      </a>
+    </div>
+  </div>
+  
+  <div class="category" id="tech">
+    <h2>科技</h2>
+    <div class="app-grid">
+      <a href="https://www.github.com/" class="app-icon" style="background-color: #24292e;">
+        <i class="icon fab fa-github" style="color: #fff;"></i>
+        <div class="app-name">GitHub</div>
+      </a>
+      <a href="https://stackoverflow.com/" class="app-icon" style="background-color: #f48024;">
+        <i class="icon fab fa-stack-overflow" style="color: #fff;"></i>
+        <div class="app-name">Stack Overflow</div>
+      </a>
+      <a href="https://www.techcrunch.com/" class="app-icon" style="background-color: #00a562;">
+        <i class="icon fas fa-microchip" style="color: #fff;"></i>
+        <div class="app-name">TechCrunch</div>
+      </a>
+      <a href="https://www.wired.com/" class="app-icon" style="background-color: #000000;">
+        <i class="icon fas fa-rss" style="color: #fff;"></i>
+        <div class="app-name">Wired</div>
+      </a>
+      <a href="https://www.producthunt.com/" class="app-icon" style="background-color: #da552f;">
+        <i class="icon fas fa-search" style="color: #fff;"></i>
+        <div class="app-name">Product Hunt</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+function updateTime() {
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  document.getElementById('current-time').textContent = `${hours}:${minutes}`;
+}
+
+function updateBattery() {
+  if ('getBattery' in navigator) {
+    navigator.getBattery().then(function(battery) {
+      function updateBatteryStatus() {
+        const level = Math.round(battery.level * 100);
+        const batteryLevel = document.getElementById('battery-level');
+        const batteryPercentage = document.getElementById('battery-percentage');
+        batteryLevel.style.width = level + '%';
+        batteryPercentage.textContent = level + '%';
+        
+        if (level <= 20) {
+          batteryLevel.style.backgroundColor = '#ff3b30';
+        } else {
+          batteryLevel.style.backgroundColor = '#32cd32';
+        }
+      }
+      
+      updateBatteryStatus();
+      battery.addEventListener('levelchange', updateBatteryStatus);
+    });
+  } else {
+    document.querySelector('.battery').style.display = 'none';
+  }
+}
+
+setInterval(updateTime, 1000);
+updateTime();
+updateBattery();
+
+// Category navigation
+const categoryButtons = document.querySelectorAll('.category-btn');
+const categories = document.querySelectorAll('.category');
+
+categoryButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const category = button.dataset.category;
+    
+    // Remove active class from all buttons
+    categoryButtons.forEach(btn => btn.classList.remove('active'));
+    
+    // Add active class to clicked button
+    button.classList.add('active');
+    
+    // Scroll to the corresponding category
+    document.getElementById(category).scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  });
+});
+
+// Intersection Observer for highlighting active category
+const observerOptions = {
+  root: null,
+  rootMargin: '-20% 0px -80% 0px',
+  threshold: 0
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const categoryId = entry.target.id;
+      categoryButtons.forEach(btn => {
+        if (btn.dataset.category === categoryId) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+  });
+}, observerOptions);
+
+categories.forEach(category => {
+  observer.observe(category);
+});
+</script>
+</body></html>

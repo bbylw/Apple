@@ -42,7 +42,7 @@ body {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  color: #000;
+  color: #fff;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
@@ -79,10 +79,11 @@ body {
 .battery-icon {
   width: 25px;
   height: 12px;
-  background-color: #000;
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 3px;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   padding: 2px;
   margin-right: 5px;
   position: relative;
@@ -96,22 +97,28 @@ body {
   transform: translateY(-50%);
   width: 2px;
   height: 4px;
-  background-color: #000;
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 0 1px 1px 0;
 }
 
 .battery-level {
   height: 100%;
-  background-color: #32cd32;
+  background-color: #000;
   border-radius: 1px;
   transition: width 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 8px;
+  font-weight: bold;
 }
 
 .app-name {
   text-align: center;
   margin-top: 5px;
   font-size: var(--app-name-font-size);
-  color: #000;
+  color: #fff;
 }
 
 .icon {
@@ -253,9 +260,8 @@ h2 {
   <div class="time" id="current-time">12:00</div>
   <div class="battery">
     <div class="battery-icon">
-      <div class="battery-level" id="battery-level"></div>
+      <div class="battery-level" id="battery-level">100%</div>
     </div>
-    <span id="battery-percentage">100%</span>
   </div>
 </div>
 
@@ -493,14 +499,13 @@ function updateBattery() {
       function updateBatteryStatus() {
         const level = Math.round(battery.level * 100);
         const batteryLevel = document.getElementById('battery-level');
-        const batteryPercentage = document.getElementById('battery-percentage');
         batteryLevel.style.width = level + '%';
-        batteryPercentage.textContent = level + '%';
+        batteryLevel.textContent = level + '%';
         
         if (level <= 20) {
           batteryLevel.style.backgroundColor = '#ff3b30';
         } else {
-          batteryLevel.style.backgroundColor = '#32cd32';
+          batteryLevel.style.backgroundColor = '#000';
         }
       }
       
